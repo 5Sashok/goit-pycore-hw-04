@@ -1,0 +1,4 @@
+Alex Korp,3000
+Zhora Borisenko,2000
+Sitarama Raju,500
+Alex,4000
