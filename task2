@@ -1,0 +1,31 @@
+def get_cats_info(path: str) -> list[dict]:
+    """
+    Зчитує інформацію про котів із текстового файлу.
+
+    Параметри:
+    path (str): шлях до файлу з даними про котів
+
+    Повертає:
+    list[dict]: список словників з ключами 'id', 'name', 'age'
+    """
+    cats = []
+
+    try:
+        with open(path, "r", encoding="utf-8") as file:
+            for line in file:
+                parts = line.strip().split(",")
+                if len(parts) == 3:
+                    cat_id, name, age = parts
+                    cats.append({"id": cat_id, "name": name, "age": age})
+                else:
+                    print(f"⚠ Пропущено некоректний рядок: {line.strip()}")
+
+    except FileNotFoundError:
+        print(f" Файл не знайдено: {path}")
+    except Exception as e:
+        print(f" Сталася помилка: {e}")
+
+    return cats
+cats_info = get_cats_info("cats.txt")
+for cat in cats_info:
+    print(cat)
